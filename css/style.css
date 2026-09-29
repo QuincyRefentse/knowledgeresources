@@ -80,34 +80,36 @@ ul {
     height: 90px;
 }
 
+/* --- Logo Layout (Image on top, PSIRA below) --- */
 .logo {
     display: flex;
-    align-items: center;
-    gap: 15px;
+    flex-direction: column; /* Stacks items vertically */
+    align-items: center;    /* Centers them horizontally */
+    justify-content: center;
 }
 
 .logo-img {
-    height: 60px; /* Adjust based on your image */
+    height: 55px;          /* Adjust this height if the logo is too big/small */
     width: auto;
+    object-fit: contain;
 }
 
-.logo-text h1 {
-    font-size: 1.5rem;
+/* --- PSIRA Horizontal Line Under Logo --- */
+.psira-reg {
+    display: flex;          /* Keeps "PSIRA:" and the number side-by-side */
+    align-items: center;
+    gap: 4px;               /* Space between the word PSIRA and the number */
+    font-size: 0.65rem;
     color: var(--secondary-color);
+    margin-top: 4px;        /* Adds a little space between the image and the text */
+    font-weight: 700;
+    white-space: nowrap;    /* Prevents it from wrapping to a new line */
     line-height: 1;
 }
 
-.logo-text span {
-    font-size: 1rem;
-    color: var(--primary-color);
-    font-weight: 700;
-    display: block;
-}
-
-.logo-text small {
-    font-size: 0.7rem;
+.psira-label {
+    font-weight: 400;
     color: var(--accent-color);
-    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
