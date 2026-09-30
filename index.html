@@ -7,6 +7,109 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Google Fonts for a professional look -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Ensure service card content is visible */
+        .service-card {
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        .service-img {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #1a1a2e;
+        }
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+        .service-details {
+            padding: 20px;
+            background: #ffffff;
+            color: #333333;
+            flex: 1;
+        }
+        .service-details h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0a1f44;
+            margin: 0 0 12px 0;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #e63946;
+            display: inline-block;
+        }
+        .service-details p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            color: #444444;
+            line-height: 1.6;
+            margin: 0 0 15px 0;
+        }
+        .service-details ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .service-details ul li {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.9rem;
+            color: #555555;
+            padding: 4px 0 4px 22px;
+            position: relative;
+        }
+        .service-details ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #e63946;
+            font-weight: bold;
+        }
+        /* Services grid layout */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        /* Section header text visible */
+        .section-header.text-white h2,
+        .section-header.text-white p {
+            color: #ffffff;
+        }
+        /* Background for services section */
+        .services-bg {
+            background: linear-gradient(rgba(10, 31, 68, 0.92), rgba(10, 31, 68, 0.92)),
+                        url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1600&h=900&fit=crop') center/cover no-repeat;
+        }
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .service-img {
+                height: 180px;
+            }
+            .service-details h3 {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -106,24 +209,175 @@
         </div>
     </section>
 
-    <!-- Services Section (With CCTV Background) -->
-    <section id="services" class="section bg-dark services-bg">
+    <!-- Services Section -->
+    <section id="services" class="section services-bg">
         <div class="container">
             <div class="section-header text-white">
                 <h2>Our Services</h2>
                 <p>Comprehensive security solutions tailored to your needs.</p>
             </div>
             <div class="services-grid">
-                <div class="service-item">Guarding</div>
-                <div class="service-item">Carwatch Making</div>
-                <div class="service-item">Monitoring</div>
-                <div class="service-item">Locksmith</div>
-                <div class="service-item">Installing</div>
-                <div class="service-item">Training</div>
-                <div class="service-item">Functioning Manufacturing</div>
-                <div class="service-item">Safety Reaction</div>
-                <div class="service-item">Manufacturing Bodyguarding</div>
-                <div class="service-item">Safeguarding</div>
+
+                <!-- 1. Guarding -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=400&fit=crop" alt="Guarding">
+                    </div>
+                    <div class="service-details">
+                        <h3>Guarding</h3>
+                        <p>Protection of critical infrastructure such as bridges, roads, water treatment plants, and communication networks. We deploy trained officers and advanced surveillance to prevent sabotage and ensure continuity.</p>
+                        <ul>
+                            <li>Critical asset protection</li>
+                            <li>Perimeter security</li>
+                            <li>Risk assessments</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 2. Carwatch Making -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1509390144018-eeaf65052242?w=600&h=400&fit=crop" alt="Carwatch Making">
+                    </div>
+                    <div class="service-details">
+                        <h3>Carwatch Making</h3>
+                        <p>Specialised security for power stations, substations, and energy facilities. Our officers are trained in high-risk environments and work closely with Eskom and local authorities.</p>
+                        <ul>
+                            <li>High-security access control</li>
+                            <li>Armed guarding</li>
+                            <li>Emergency response coordination</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 3. Monitoring -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=600&h=400&fit=crop" alt="Monitoring">
+                    </div>
+                    <div class="service-details">
+                        <h3>Monitoring</h3>
+                        <p>Rural and farm security services to combat stock theft, trespassing, and farm attacks. We provide patrols, alarm monitoring, and rapid response for agricultural properties.</p>
+                        <ul>
+                            <li>Perimeter patrols</li>
+                            <li>Stock theft prevention</li>
+                            <li>Rapid response</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 4. Locksmith -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=600&h=400&fit=crop" alt="Locksmith">
+                    </div>
+                    <div class="service-details">
+                        <h3>Locksmith</h3>
+                        <p>Professional crowd management for events, protests, and public gatherings. Our trained personnel ensure safety, order, and smooth flow of people at any venue.</p>
+                        <ul>
+                            <li>Event security</li>
+                            <li>Access control</li>
+                            <li>Conflict resolution</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 5. Installing -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&h=400&fit=crop" alt="Installing">
+                    </div>
+                    <div class="service-details">
+                        <h3>Installing</h3>
+                        <p>Close protection for executives, VIPs, celebrities, and high-risk individuals. Our bodyguards are highly trained in defensive driving, firearms, and threat assessment.</p>
+                        <ul>
+                            <li>Personal close protection</li>
+                            <li>Travel security</li>
+                            <li>Discreet & professional</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 6. Training -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&h=400&fit=crop" alt="Training">
+                    </div>
+                    <div class="service-details">
+                        <h3>Training</h3>
+                        <p>Security services for government buildings, courts, and municipal offices. We ensure the safety of public officials, employees, and visitors while maintaining order.</p>
+                        <ul>
+                            <li>Access control</li>
+                            <li>Visitor screening</li>
+                            <li>Emergency evacuation support</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 7. Functioning Manufacturing -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1553775282-20af80779df7?w=600&h=400&fit=crop" alt="Functioning Manufacturing">
+                    </div>
+                    <div class="service-details">
+                        <h3>Functioning Manufacturing</h3>
+                        <p>Dedicated customer support for all security-related queries, complaints, and service requests. Our team ensures quick resolution and client satisfaction.</p>
+                        <ul>
+                            <li>24/7 helpdesk</li>
+                            <li>Client liaison officers</li>
+                            <li>Service feedback management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 8. Safety Reaction -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=600&h=400&fit=crop" alt="Safety Reaction">
+                    </div>
+                    <div class="service-details">
+                        <h3>Safety Reaction</h3>
+                        <p>Rapid armed response to alarms, intrusions, and emergencies. Our reaction vehicles are equipped with trained armed officers and communication systems.</p>
+                        <ul>
+                            <li>24/7 armed response</li>
+                            <li>Alarm verification</li>
+                            <li>Emergency medical backup</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 9. Manufacturing Bodyguarding -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=600&h=400&fit=crop" alt="Manufacturing Bodyguarding">
+                    </div>
+                    <div class="service-details">
+                        <h3>Manufacturing Bodyguarding</h3>
+                        <p>24/7 remote CCTV surveillance from our control room. We monitor feeds in real-time, detect suspicious activity, and coordinate immediate response.</p>
+                        <ul>
+                            <li>Real-time monitoring</li>
+                            <li>Video analytics</li>
+                            <li>Incident recording & reporting</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 10. Safeguarding -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&h=400&fit=crop" alt="Safeguarding">
+                    </div>
+                    <div class="service-details">
+                        <h3>Safeguarding</h3>
+                        <p>Mobile patrol services for residential estates, business parks, and industrial areas. Our marked vehicles provide visible deterrence and rapid response.</p>
+                        <ul>
+                            <li>Random & scheduled patrols</li>
+                            <li>GPS tracking</li>
+                            <li>Incident reporting</li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -154,8 +408,6 @@
             </div>
         </div>
     </section>
-
-   
 
     <!-- Footer / Contact -->
     <footer>
