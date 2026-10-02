@@ -133,7 +133,7 @@
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#values">Core Values</a></li>
-                <li><a href="#quote" class="btn-quote" id="quoteButton">Get a Quote</a></li>
+                <li><a href="#" class="btn-quote" id="quoteButton">Get a Quote</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -443,26 +443,52 @@
 
     <script src="js/script.js"></script>
     <script>
-        // Get a Quote button email functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const quoteButton = document.getElementById('quoteButton');
-            
+
             if (quoteButton) {
-                quoteButton.addEventListener('click', function(e) {
+                quoteButton.addEventListener('click', function (e) {
                     e.preventDefault();
-                    
-                    // Email address from the provided contact details
+                    e.stopPropagation();
+
+                    // Your email address
                     const email = 'moshemakoka@gmail.com';
-                    
-                    // Subject and body for the email
+
+                    // Subject line
                     const subject = 'Request for Security Service Quote';
-                    const body = 'Hello Knowledge Resources Group,%0D%0A%0D%0AI would like to request a quote for your security services.%0D%0A%0D%0APlease provide me with more information.%0D%0A%0D%0AThank you.';
-                    
-                    // Create mailto link
-                    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
-                    
-                    // Open default email client
-                    window.location.href = mailtoLink;
+
+                    // Email body template
+                    const body =
+                        'Hello Knowledge Resources Group,\n\n' +
+                        'I would like to request a quote for your security services.\n\n' +
+                        '--- My Details ---\n' +
+                        'Full Name: \n' +
+                        'Phone Number: \n' +
+                        'Email Address: \n' +
+                        'Service Needed: \n' +
+                        'Location / Site Address: \n' +
+                        'Preferred Start Date: \n' +
+                        'Additional Details: \n\n' +
+                        'Thank you.';
+
+                    // Build the mailto link
+                    const mailtoLink =
+                        'mailto:' + email +
+                        '?subject=' + encodeURIComponent(subject) +
+                        '&body=' + encodeURIComponent(body);
+
+                    // Primary method: open in current window
+                    try {
+                        window.location.href = mailtoLink;
+                    } catch (err) {
+                        // Fallback method: create a hidden anchor and click it
+                        const link = document.createElement('a');
+                        link.href = mailtoLink;
+                        link.style.display = 'none';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }
                 });
             }
         });
