@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Knowledge Resources Group | Safety & Security</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Google Fonts for a professional look -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Ensure service card content is visible */
         .service-card {
             background: #ffffff;
             border-radius: 10px;
@@ -18,9 +16,7 @@
             display: flex;
             flex-direction: column;
         }
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
+        .service-card:hover { transform: translateY(-5px); }
         .service-img {
             width: 100%;
             height: 200px;
@@ -34,9 +30,7 @@
             display: block;
             transition: transform 0.3s ease;
         }
-        .service-card:hover .service-img img {
-            transform: scale(1.05);
-        }
+        .service-card:hover .service-img img { transform: scale(1.05); }
         .service-details {
             padding: 20px;
             background: #ffffff;
@@ -60,11 +54,7 @@
             line-height: 1.6;
             margin: 0 0 15px 0;
         }
-        .service-details ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+        .service-details ul { list-style: none; padding: 0; margin: 0; }
         .service-details ul li {
             font-family: 'Open Sans', sans-serif;
             font-size: 0.9rem;
@@ -79,35 +69,155 @@
             color: #e63946;
             font-weight: bold;
         }
-        /* Services grid layout */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
-        /* Section header text visible */
         .section-header.text-white h2,
-        .section-header.text-white p {
-            color: #ffffff;
-        }
-        /* Background for services section */
+        .section-header.text-white p { color: #ffffff; }
         .services-bg {
             background: linear-gradient(rgba(10, 31, 68, 0.92), rgba(10, 31, 68, 0.92)),
                         url('https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=1600&h=900&fit=crop') center/cover no-repeat;
         }
-        /* Mobile adjustments */
         @media (max-width: 768px) {
-            .services-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .service-img {
-                height: 180px;
-            }
-            .service-details h3 {
-                font-size: 1.15rem;
-            }
+            .services-grid { grid-template-columns: 1fr; gap: 20px; }
+            .service-img { height: 180px; }
+            .service-details h3 { font-size: 1.15rem; }
+        }
+
+        /* ============ QUOTE MODAL STYLES ============ */
+        .quote-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .quote-modal.active { display: flex; }
+        .quote-modal-content {
+            background: #ffffff;
+            border-radius: 12px;
+            max-width: 550px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 35px 30px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            animation: modalFadeIn 0.25s ease;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .quote-modal-close {
+            position: absolute;
+            top: 12px; right: 18px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #999;
+            background: none;
+            border: none;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .quote-modal-close:hover { color: #e63946; }
+        .quote-modal-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: #0a1f44;
+            font-size: 1.6rem;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+        }
+        .quote-modal-content > p {
+            font-family: 'Open Sans', sans-serif;
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0 0 22px 0;
+        }
+        .quote-form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .quote-form-group label {
+            display: block;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0a1f44;
+            margin-bottom: 6px;
+        }
+        .quote-form-group input,
+        .quote-form-group select,
+        .quote-form-group textarea {
+            width: 100%;
+            padding: 11px 13px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.95rem;
+            border: 1.5px solid #d0d5dd;
+            border-radius: 7px;
+            box-sizing: border-box;
+            transition: border-color 0.2s ease;
+            background: #fff;
+            color: #333;
+        }
+        .quote-form-group input:focus,
+        .quote-form-group select:focus,
+        .quote-form-group textarea:focus {
+            outline: none;
+            border-color: #0a1f44;
+        }
+        .quote-form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .quote-submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: #e63946;
+            color: #ffffff;
+            border: none;
+            border-radius: 7px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            margin-top: 8px;
+        }
+        .quote-submit-btn:hover { background: #c92e3a; }
+        .quote-submit-btn:disabled {
+            background: #999;
+            cursor: not-allowed;
+        }
+        .quote-form-status {
+            margin-top: 14px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 0.9rem;
+            text-align: center;
+            display: none;
+        }
+        .quote-form-status.success {
+            display: block;
+            color: #1a7f37;
+            background: #d4f4dd;
+            padding: 10px;
+            border-radius: 7px;
+        }
+        .quote-form-status.error {
+            display: block;
+            color: #c92e3a;
+            background: #fde2e4;
+            padding: 10px;
+            border-radius: 7px;
         }
     </style>
 </head>
@@ -116,13 +226,8 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container nav-container">
-            
-            <!-- Logo Section: Image on top, PSIRA below -->
             <div class="logo">
-                <!-- Logo Image -->
                 <img src="images/darknowlege.jpg" alt="Knowledge Resources Group Logo" class="logo-img">
-                
-                <!-- PSIRA Registration Number (Horizontal) -->
                 <div class="psira-reg">
                     <span class="psira-label">PSIRA:</span> 4805676
                 </div>
@@ -162,7 +267,6 @@
                 <div class="about-text">
                     <p>Our company is a professional security service provider committed to delivering reliable, cost-effective, and customer-oriented security solutions. We benchmark our services against the best in the industry, striving to meet both national and international standards.</p>
                     <p>Our strength lies in recruiting, training, and retaining highly qualified security personnel, who embody professionalism, integrity, and dedication to ensuring the safety and satisfaction of our clients.</p>
-                    
                     <div class="mission-vision">
                         <div class="mv-card">
                             <h3>Vision</h3>
@@ -185,26 +289,11 @@
                 <h2>Our Core Values</h2>
             </div>
             <div class="values-grid">
-                <div class="value-card">
-                    <h3>Dignity & Respect</h3>
-                    <p>Treat all clients with dignity and respect.</p>
-                </div>
-                <div class="value-card">
-                    <h3>Honesty & Loyalty</h3>
-                    <p>We uphold the highest standards of integrity.</p>
-                </div>
-                <div class="value-card">
-                    <h3>Professional Conduct</h3>
-                    <p>Professionalism in every interaction.</p>
-                </div>
-                <div class="value-card">
-                    <h3>Quality Service</h3>
-                    <p>Commitment to quality customer service.</p>
-                </div>
-                <div class="value-card">
-                    <h3>Compliance</h3>
-                    <p>Compliance with PSIRA requirements and national legislation.</p>
-                </div>
+                <div class="value-card"><h3>Dignity & Respect</h3><p>Treat all clients with dignity and respect.</p></div>
+                <div class="value-card"><h3>Honesty & Loyalty</h3><p>We uphold the highest standards of integrity.</p></div>
+                <div class="value-card"><h3>Professional Conduct</h3><p>Professionalism in every interaction.</p></div>
+                <div class="value-card"><h3>Quality Service</h3><p>Commitment to quality customer service.</p></div>
+                <div class="value-card"><h3>Compliance</h3><p>Compliance with PSIRA requirements and national legislation.</p></div>
             </div>
         </div>
     </section>
@@ -218,11 +307,8 @@
             </div>
             <div class="services-grid">
 
-                <!-- 1. Critical Infrastructure Security -->
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="images/criticalinfra.PNG" alt="Critical Infrastructure Security">
-                    </div>
+                    <div class="service-img"><img src="images/criticalinfra.PNG" alt="Critical Infrastructure Security"></div>
                     <div class="service-details">
                         <h3>Critical Infrastructure Security</h3>
                         <p>High-level defense for vital public and private assets, including water plants, communications towers, transport corridors, and bridges.</p>
@@ -234,11 +320,8 @@
                     </div>
                 </div>
 
-                <!-- 2. Energy & Power Facility Protection -->
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="images/securityg.jpg" alt="Energy & Power Facility Protection">
-                    </div>
+                    <div class="service-img"><img src="images/securityg.jpg" alt="Energy & Power Facility Protection"></div>
                     <div class="service-details">
                         <h3>Energy & Power Facility Protection</h3>
                         <p>Specialized high-risk site defense designed for substations, power plants, and renewable energy grids in alignment with utility standard protocols.</p>
@@ -250,11 +333,8 @@
                     </div>
                 </div>
 
-                <!-- 3. Agricultural & Rural Security -->
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="images/jabu.jpg" alt="Agricultural & Rural Security">
-                    </div>
+                    <div class="service-img"><img src="images/jabu.jpg" alt="Agricultural & Rural Security"></div>
                     <div class="service-details">
                         <h3>Agricultural & Rural Security</h3>
                         <p>Proactive anti-poaching, anti-trespassing, and property defense customized for farms, game reserves, and agricultural estates.</p>
@@ -266,11 +346,8 @@
                     </div>
                 </div>
 
-                <!-- 4. Event & Crowd Management -->
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="images/crowdm.jpg" alt="Event & Crowd Management">
-                    </div>
+                    <div class="service-img"><img src="images/crowdm.jpg" alt="Event & Crowd Management"></div>
                     <div class="service-details">
                         <h3>Event & Crowd Management</h3>
                         <p>Comprehensive safety planning and on-site crowd control for concerts, sports matches, political gatherings, and corporate events.</p>
@@ -282,11 +359,8 @@
                     </div>
                 </div>
 
-                <!-- 5. VIP & Executive Close Protection -->
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="images/vippro.jpg" alt="VIP & Executive Close Protection" style="object-position: center 25%;">
-                    </div>
+                    <div class="service-img"><img src="images/vippro.jpg" alt="VIP & Executive Close Protection" style="object-position: center 25%;"></div>
                     <div class="service-details">
                         <h3>VIP & Executive Close Protection</h3>
                         <p>Elite personal security details, convoy operations, and threat neutralization for executives, diplomats, and high-net-worth individuals.</p>
@@ -298,11 +372,8 @@
                     </div>
                 </div>
 
-                <!-- 6. Public Sector & Municipal Facility Security -->
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="images/ama.jpg" alt="Public Sector & Municipal Facility Security">
-                    </div>
+                    <div class="service-img"><img src="images/ama.jpg" alt="Public Sector & Municipal Facility Security"></div>
                     <div class="service-details">
                         <h3>Public Sector & Municipal Facility Security</h3>
                         <p>Rigorous access control, public flow management, and premise defense for courthouses, municipal centers, and government departments.</p>
@@ -314,11 +385,8 @@
                     </div>
                 </div>
 
-                <!-- 7. 24/7 Client Support & Operations Desk -->
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="images/kno.jpg" alt="24/7 Client Support & Operations Desk">
-                    </div>
+                    <div class="service-img"><img src="images/kno.jpg" alt="24/7 Client Support & Operations Desk"></div>
                     <div class="service-details">
                         <h3>24/7 Client Support & Operations Desk</h3>
                         <p>Centralized communication hub handling emergency escalations, incident tickets, client liaison, and real-time status reporting.</p>
@@ -330,11 +398,8 @@
                     </div>
                 </div>
 
-                <!-- 8. Armed Tactical Response -->
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="images/rapid.jpg" alt="Armed Tactical Response">
-                    </div>
+                    <div class="service-img"><img src="images/rapid.jpg" alt="Armed Tactical Response"></div>
                     <div class="service-details">
                         <h3>Armed Tactical Response</h3>
                         <p>High-speed armed intervention units responding immediately to silent alarms, perimeter triggers, and SOS panic alerts.</p>
@@ -346,11 +411,8 @@
                     </div>
                 </div>
 
-                <!-- 9. Remote Control Room & Video Surveillance -->
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="images/cctv.PNG" alt="Remote Control Room & Video Surveillance">
-                    </div>
+                    <div class="service-img"><img src="images/cctv.PNG" alt="Remote Control Room & Video Surveillance"></div>
                     <div class="service-details">
                         <h3>Remote Control Room & Video Surveillance</h3>
                         <p>Off-site video monitoring powered by smart analytics, perimeter tripwires, and live audio interventions to catch intrusions before entry.</p>
@@ -362,11 +424,8 @@
                     </div>
                 </div>
 
-                <!-- 10. Mobile Fleet Patrols -->
                 <div class="service-card">
-                    <div class="service-img">
-                        <img src="images/mobile-patrol.jpg" alt="Mobile Fleet Patrols">
-                    </div>
+                    <div class="service-img"><img src="images/mobile-patrol.jpg" alt="Mobile Fleet Patrols"></div>
                     <div class="service-details">
                         <h3>Mobile Fleet Patrols</h3>
                         <p>Highly visible vehicle patrols ensuring security presence, deterrent patrols, and check-in verifications across suburbs, industrial zones, and estates.</p>
@@ -441,56 +500,134 @@
         </div>
     </footer>
 
+    <!-- ============ QUOTE MODAL ============ -->
+    <div class="quote-modal" id="quoteModal">
+        <div class="quote-modal-content">
+            <button class="quote-modal-close" id="quoteModalClose" aria-label="Close">&times;</button>
+            <h2>Request a Quote</h2>
+            <p>Fill in your details below and we'll get back to you shortly.</p>
+
+            <!-- 
+                ⚠️ IMPORTANT: Replace YOUR_FORM_ID_HERE below with your actual Formspree ID.
+                Example: action="https://formspree.io/f/xnqkrbwy"
+            -->
+            <form id="quoteForm" action="https://formspree.io/f/mdekrnpg" method="POST">
+                <div class="quote-form-group">
+                    <label for="q-name">Full Name *</label>
+                    <input type="text" id="q-name" name="name" required placeholder="John Doe">
+                </div>
+                <div class="quote-form-group">
+                    <label for="q-phone">Phone Number *</label>
+                    <input type="tel" id="q-phone" name="phone" required placeholder="+27 82 123 4567">
+                </div>
+                <div class="quote-form-group">
+                    <label for="q-email">Email Address *</label>
+                    <input type="email" id="q-email" name="email" required placeholder="you@example.com">
+                </div>
+                <div class="quote-form-group">
+                    <label for="q-service">Service Needed *</label>
+                    <select id="q-service" name="service" required>
+                        <option value="">-- Select a service --</option>
+                        <option>Critical Infrastructure Security</option>
+                        <option>Energy & Power Facility Protection</option>
+                        <option>Agricultural & Rural Security</option>
+                        <option>Event & Crowd Management</option>
+                        <option>VIP & Executive Close Protection</option>
+                        <option>Public Sector & Municipal Facility Security</option>
+                        <option>24/7 Client Support & Operations Desk</option>
+                        <option>Armed Tactical Response</option>
+                        <option>Remote Control Room & Video Surveillance</option>
+                        <option>Mobile Fleet Patrols</option>
+                        <option>Other / Not Sure</option>
+                    </select>
+                </div>
+                <div class="quote-form-group">
+                    <label for="q-location">Location / Site Address</label>
+                    <input type="text" id="q-location" name="location" placeholder="City, Suburb, or Full Address">
+                </div>
+                <div class="quote-form-group">
+                    <label for="q-message">Additional Details</label>
+                    <textarea id="q-message" name="message" placeholder="Tell us more about your security needs..."></textarea>
+                </div>
+                <button type="submit" class="quote-submit-btn" id="quoteSubmitBtn">Send Request</button>
+                <div class="quote-form-status" id="quoteFormStatus"></div>
+            </form>
+        </div>
+    </div>
+
     <script src="js/script.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const quoteButton = document.getElementById('quoteButton');
+            const quoteButton    = document.getElementById('quoteButton');
+            const quoteModal     = document.getElementById('quoteModal');
+            const quoteClose     = document.getElementById('quoteModalClose');
+            const quoteForm      = document.getElementById('quoteForm');
+            const quoteSubmitBtn = document.getElementById('quoteSubmitBtn');
+            const quoteStatus    = document.getElementById('quoteFormStatus');
 
-            if (quoteButton) {
-                quoteButton.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
+            // Open modal
+            quoteButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                quoteModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
 
-                    // Your email address
-                    const email = 'moshemakoka@gmail.com';
+            // Close modal (X button)
+            quoteClose.addEventListener('click', function () {
+                quoteModal.classList.remove('active');
+                document.body.style.overflow = '';
+            });
 
-                    // Subject line
-                    const subject = 'Request for Security Service Quote';
+            // Close modal (click outside)
+            quoteModal.addEventListener('click', function (e) {
+                if (e.target === quoteModal) {
+                    quoteModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
 
-                    // Email body template
-                    const body =
-                        'Hello Knowledge Resources Group,\n\n' +
-                        'I would like to request a quote for your security services.\n\n' +
-                        '--- My Details ---\n' +
-                        'Full Name: \n' +
-                        'Phone Number: \n' +
-                        'Email Address: \n' +
-                        'Service Needed: \n' +
-                        'Location / Site Address: \n' +
-                        'Preferred Start Date: \n' +
-                        'Additional Details: \n\n' +
-                        'Thank you.';
+            // Close modal (ESC key)
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && quoteModal.classList.contains('active')) {
+                    quoteModal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
 
-                    // Build the mailto link
-                    const mailtoLink =
-                        'mailto:' + email +
-                        '?subject=' + encodeURIComponent(subject) +
-                        '&body=' + encodeURIComponent(body);
+            // Submit form via Formspree (AJAX — no page reload)
+            quoteForm.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                quoteSubmitBtn.disabled = true;
+                quoteSubmitBtn.textContent = 'Sending...';
+                quoteStatus.className = 'quote-form-status';
+                quoteStatus.textContent = '';
 
-                    // Primary method: open in current window
-                    try {
-                        window.location.href = mailtoLink;
-                    } catch (err) {
-                        // Fallback method: create a hidden anchor and click it
-                        const link = document.createElement('a');
-                        link.href = mailtoLink;
-                        link.style.display = 'none';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
+                try {
+                    const response = await fetch(quoteForm.action, {
+                        method: 'POST',
+                        body: new FormData(quoteForm),
+                        headers: { 'Accept': 'application/json' }
+                    });
+
+                    if (response.ok) {
+                        quoteStatus.className = 'quote-form-status success';
+                        quoteStatus.textContent = '✓ Thank you! Your request has been sent. We will contact you shortly.';
+                        quoteForm.reset();
+                        quoteSubmitBtn.textContent = 'Sent ✓';
+                        setTimeout(() => {
+                            quoteSubmitBtn.disabled = false;
+                            quoteSubmitBtn.textContent = 'Send Request';
+                        }, 3000);
+                    } else {
+                        throw new Error('Form submission failed');
                     }
-                });
-            }
+                } catch (err) {
+                    quoteStatus.className = 'quote-form-status error';
+                    quoteStatus.textContent = '✗ Something went wrong. Please email us directly at moshemakoka@gmail.com';
+                    quoteSubmitBtn.disabled = false;
+                    quoteSubmitBtn.textContent = 'Send Request';
+                }
+            });
         });
     </script>
 </body>
