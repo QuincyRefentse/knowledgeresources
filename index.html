@@ -133,7 +133,7 @@
                 <li><a href="#about">About Us</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#values">Core Values</a></li>
-                <li><a href="#quote" class="btn-quote">Get a Quote</a></li>
+                <li><a href="#quote" class="btn-quote" id="quoteButton">Get a Quote</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -442,5 +442,30 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+        // Get a Quote button email functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const quoteButton = document.getElementById('quoteButton');
+            
+            if (quoteButton) {
+                quoteButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Email address from the provided contact details
+                    const email = 'moshemakoka@gmail.com';
+                    
+                    // Subject and body for the email
+                    const subject = 'Request for Security Service Quote';
+                    const body = 'Hello Knowledge Resources Group,%0D%0A%0D%0AI would like to request a quote for your security services.%0D%0A%0D%0APlease provide me with more information.%0D%0A%0D%0AThank you.';
+                    
+                    // Create mailto link
+                    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${body}`;
+                    
+                    // Open default email client
+                    window.location.href = mailtoLink;
+                });
+            }
+        });
+    </script>
 </body>
 </html>
